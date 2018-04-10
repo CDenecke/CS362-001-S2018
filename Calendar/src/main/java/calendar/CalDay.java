@@ -199,7 +199,7 @@ public class CalDay {
         Iterator itr = ((CalDay)calday).iterator();
         
         String buffer;
-        buffer = Integer.toString(((CalDay)calday).getMonth())+ "-"; 
+        buffer = Integer.toString(((CalDay)calday).getMonth()); //EDIT used to be ...getMonth())+ "-";
         buffer += Integer.toString(((CalDay)calday).getDay())+ "-";  
         buffer += Integer.toString(((CalDay)calday).getYear())+ " "; 
 

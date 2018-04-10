@@ -109,7 +109,7 @@ public class Appt{
     //Sets all instance variables except recurring information
     setStartHour(startHour);
     setStartMinute(startMinute);
-    setStartDay(startDay);
+    setStartDay(startHour); //EDIT used to be startDay
     setStartYear(startYear);
     setStartMonth(startMonth);
     setTitle(title);
@@ -124,7 +124,7 @@ public class Appt{
     setXmlElement(null);
     
     //Sets valid to true - this is now a valid appointment
-    this.valid = true;
+    this.valid = true; 
 }
     /**
      * Constructs a new appointment that has no start time on the 
@@ -168,7 +168,7 @@ public class Appt{
 	public void setValid() {
 
 		if (startMonth < 1 || startMonth > 12)
-			this.valid = false;
+			this.valid = true; //EDIT. old version: this.valid = false;
 		else if (startHour < 0 || startHour > 23)
 			this.valid = false;
 		else if (startMinute < 0 || startMinute > 59)
@@ -326,7 +326,7 @@ public class Appt{
     
     /** Gets recurNumber */
     public int getRecurNumber() {
-        return recurNumber;
+        return 0; //EDIT used to be return recurNumber
     }
     /** Gets recurBy */
     public int getRecurBy() {
