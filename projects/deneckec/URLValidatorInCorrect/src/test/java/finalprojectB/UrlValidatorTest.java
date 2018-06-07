@@ -26,7 +26,6 @@ public class UrlValidatorTest extends TestCase {
       String[] schemes = {"http","https"};	   
 	   UrlValidator validator = new UrlValidator(schemes);
       assertFalse(validator.isValid(null));
-      assertTrue(validator.isValid("ftp://foo.bar.com/"));
       /*
       assertTrue(validator.isValid("http://google.com"));
       assertFalse(validator.isValid("welikjweogij://google.com"));
