@@ -78,7 +78,7 @@ public class UrlValidator implements Serializable {
     private static final long serialVersionUID = 7557161713937335013L;
 
     private static final int MAX_UNSIGNED_16_BIT_INT = 0xFFFF; // port max
-
+    
     /**
      * Allows all validly formatted schemes to pass validation instead of
      * supplying a set of valid schemes.
@@ -296,12 +296,14 @@ public class UrlValidator implements Serializable {
      */
     public boolean isValid(String value) {
         if (value == null) {
+            System.out.println("pattern doesn't match");
             return false;
         }
 
         // Check the whole url address structure
         Matcher urlMatcher = URL_PATTERN.matcher(value);
         if (!urlMatcher.matches()) {
+
             return false;
         }
 
