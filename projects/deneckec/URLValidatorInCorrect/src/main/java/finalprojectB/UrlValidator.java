@@ -299,29 +299,25 @@ public class UrlValidator implements Serializable {
      */
     public boolean isValid(String value) {
         if (value == null) {
-            System.out.println("value is null");
-            return false;
+           return false;
         }
 
         // Check the whole url address structure
         Matcher urlMatcher = URL_PATTERN.matcher(value);
         if (!urlMatcher.matches()) {
-            System.out.println("URL_PATTERN doesn't match");
             return false;
         }
 
         String scheme = urlMatcher.group(PARSE_URL_SCHEME);
         if (!isValidScheme(scheme)) {
-            System.out.println("scheme doesn't match");
             return false;
         }
 
         String authority = urlMatcher.group(PARSE_URL_AUTHORITY);
 
-        if ("http".equals(scheme)) {// Special case - file: allows an empty authority
+        if ("https".equals(scheme)) {// Special case - file: allows an empty authority
             if (authority != null) {
                 if (authority.contains(":")) { // but cannot allow trailing :
-                    System.out.println("authority contains :");
                     return false;
                 }
             }
@@ -359,18 +355,15 @@ public class UrlValidator implements Serializable {
      */
     protected boolean isValidScheme(String scheme) {
         if (scheme == null) {
-            System.out.println("cheme is null");
             return false;
         }
 
         // TODO could be removed if external schemes were checked in the ctor before being stored
         if (!SCHEME_PATTERN.matcher(scheme).matches()) {
-            System.out.println("SCHEME_PATTERN.matcher(scheme)... doesn't match");
             return false;
         }
 
         if (isOff(ALLOW_ALL_SCHEMES) && !allowedSchemes.contains(scheme.toUpperCase(Locale.ENGLISH))) {
-            //System.out.println("isOff(ALLOW_ALL_SCHEMES) = " + isOff(ALLOW_ALL_SCHEMES) + " !allowedSchemes.contains(scheme.toLowerCase(Locale.ENGLISH)) = " + 
             return false;
         }
 
